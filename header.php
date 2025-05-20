@@ -1,4 +1,4 @@
-!DOCTYPE html
+<!--<!DOCTYPE html>-->
 <title>Ma Boutique en ligne</title>
 <html lang="en">
 

@@ -8,12 +8,37 @@ $iPhone = [
     "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
 ];
 
+//création d'une boucle while pour l'affichage
+$keys = array_keys($iPhone); // Récupère les clés du tableau associatif
+$i = 0; // Initialisation d'un compteur à 0
+while ($i < count($keys)) { // Tant que le compteur est inférieur au nombre de clés
+    $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
+    echo "<p><b>$key : " . $iPhone[$key] . "</b></p>"; // Affiche en balise paragraphe la clé et la valeur associée
+    $i++; // Incrémente le compteur
+}
+
+//création d'une boucle do while pour l'affichage
+$i = 0; // Initialisation d'un compteur à 0
+$keys = array_keys($iPhone); // Récupère les clés du tableau associatif
+do { // Les instructions suivantes sont exécutées
+    $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
+    echo "<p><b>$key : " . $iPhone[$key] . "</b></p>"; // Affiche en balise paragraphe la clé et la valeur associée
+    $i++; // Incrémente le compteur
+} while ($i < count($keys)); // Tant que le compteur est inférieur au nombre de clés
+
+//création d'une boucle for pour l'affichage
+for ($i = 0; $i < count($keys); $i++) { // Tant que le compteur est inférieur au nombre de clés
+    $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
+    echo "<p><b>$key : " . $iPhone[$key] . "</b></p>"; // Affiche en balise paragraphe la clé et la valeur associée
+}
+
+/*
 //echo var_dump($iphone) . "<br>";
 echo "<div>";
 echo "<h3>nom du produit : $iphone[name]</h3>";
 echo "<p>Prix : $iphone[price]</p>";
 echo "<img src=$iphone[picture_url] alt='Image produit' />";
-echo "</div>";
+echo "</div>";*/
 
 /*$iPad = [
     "name" => "iPad",

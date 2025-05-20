@@ -23,23 +23,30 @@ $products = [
         "picture_url" => "https://static.fnac-static.com/multimedia/Images/FR/MDM/19/b2/a1/10596889/1540-1/tsp20250110194849/iMac-Apple-27-Ecran-Retina-5K-Intel-Core-i5-8-Go-RAM-1-To-Fusion-Drive-Argent-MRQY2FN-2019.jpg",
     ],
 ];
+
 // La méthode d'affichage var_dump() avec les balises de préformatage <pre>
+/*
 echo '<pre>';
 var_dump($products);
-echo '</pre>';
+echo '</pre>';*/
 
+/*
 // affichage des informations des produits en utilisant l'association clef/valeur
 echo $products["iPhone"]["name"].": price: ".$products["iPhone"]["price"].", weight: ".$products["iPhone"]["weight"].".<br>";
 echo $products["iPad"]["name"].": name: ".$products["iPad"]["price"].", price: ".$products["iPad"]["weight"].".<br>";
-echo $products["iMac"]["name"].": name: ".$products["iMac"]["price"].", price: ".$products["iMac"]["weight"].".<br>";
+echo $products["iMac"]["name"].": name: ".$products["iMac"]["price"].", price: ".$products["iMac"]["weight"].".<br>";*/
 
+//création d'une double  boucle foreach pour l'affichage
 
-foreach ($products as $key => $product) {
-    echo "<p><b>$key</b></p>";
-    echo "<ul>";
-    foreach ($product as $attribute => $value) {
-        echo "<li>$attribute: $value</li>";
+foreach ($products as $key => $product) { // Parcourt chaque produit dans le tableau $products en initialisant une variable $key (iPhone, iPad et iMac) pour la clé et $product pour la valeur
+    echo "<p><b>$key</b></p>"; // Affiche la clé du produit (iPhone, iPad, iMac) en gras
+    echo "<ul>"; // Ouvre une liste non ordonnée contennant :
+    foreach ($product as $attribute => $value) { // une deuxième boucle qui parcourt chaque attribut du produit en initialisant une variable $attribute pour la clé (name, price, weight, discount, picture_url) et $value pour la valeur
+        echo "<li>$attribute: $value</li>"; // Affiche chaque attribut du produit sous forme de liste
     }
-    echo "</ul>";
+    echo "</ul>"; // Ferme la liste de produits non ordonnée
 }
+
+
+
 ?>
