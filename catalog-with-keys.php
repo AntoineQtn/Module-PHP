@@ -1,11 +1,13 @@
 <?php
-$iphone = [
+//création d'un tableau associatif clef/valeur
+$iPhone = [
     "name" => "iPhone",
     "price" => 45000,
     "weight" => 200,
     "discount" => 10,
     "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
 ];
+
 //echo var_dump($iphone) . "<br>";
 echo "<div>";
 echo "<h3>nom du produit : $iphone[name]</h3>";
