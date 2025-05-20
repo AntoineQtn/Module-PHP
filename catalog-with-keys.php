@@ -1,4 +1,7 @@
+
+
 <?php
+
 //création d'un tableau associatif clef/valeur
 $iPhone = [
     "name" => "iPhone",
@@ -7,6 +10,7 @@ $iPhone = [
     "discount" => 10,
     "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
 ];
+formatPrice($iPhone["price"]); // Appel de la fonction formatPrice() pour afficher le prix de l'iPhone
 
 //création d'une boucle while pour l'affichage
 $keys = array_keys($iPhone); // Récupère les clés du tableau associatif

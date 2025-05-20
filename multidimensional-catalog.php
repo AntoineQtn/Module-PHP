@@ -1,5 +1,8 @@
+
+
 <?php
-//créarion d'un tableau multidimensionnel à deux dimensions contenant trois tableaux associatifs
+
+//création d'un tableau multidimensionnel à deux dimensions contenant trois tableaux associatifs
 $products = [
     "iPhone" => [
         "name" => "iPhone",
