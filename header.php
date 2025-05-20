@@ -28,5 +28,5 @@
                 <button type="button" class="btn">Connection</button>
             </a>
         </div>
-        <h1>FTitre 1</h1>
+        <h1>Titre 1</h1>
     </header>

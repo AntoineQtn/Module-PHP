@@ -9,9 +9,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="Projet_Iteration_2.js"></script>
-
 </body>
 
 </html>
