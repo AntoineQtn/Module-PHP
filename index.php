@@ -1,8 +1,10 @@
 <?php echo 'Hello World';
 $name = "item";
-echo $name;
-$prix = 0;
+echo $name . "<br>";
+
+$prix = 10;
 print "<p>$prix</p>"; 
+
 $donnee = "url";
-print "<img src=$donnee>";
- ?>
+print "<img src=\"$donnee\">";
+?>
