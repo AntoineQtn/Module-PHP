@@ -1,10 +1,3 @@
-<?php echo 'Hello World';
-$name = "item";
-echo $name . "<br>";
-
-$prix = 10;
-print "<p>$prix</p>"; 
-
-$donnee = "url";
-print "<img src=\"$donnee\">";
-?>
+<?php include('header.php'); ?>
+<?php include('item.php'); ?>
+<?php include('footer.php'); ?>

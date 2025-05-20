@@ -1,8 +1,1 @@
-<?php phpinfo(); 
-$name = "item";
-print "<h1>$name</h1>";
-$prix = 10;
-print "<p>$prix</p>"; 
-$donnee = "url";
-print "<img src=$donnee>";
-?>
+<?php phpinfo();?>
