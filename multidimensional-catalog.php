@@ -50,9 +50,10 @@ foreach ($products as $key => $product) { // Parcourt chaque produit dans le tab
     foreach ($product as $attribute => $value) { // une deuxième boucle qui parcourt chaque attribut du produit en initialisant une variable $attribute pour la clé (name, price, weight, discount, picture_url) et $value pour la valeur
         echo "<li>$attribute: $value</li>"; // Affiche chaque attribut du produit sous forme de liste
     }
-    $price =formatPrice($product["price"]);
-    priceExcludingVAT($product["price"]);
-    discountedPrice($product["price"], $product["discount"]);
+    $price = formatPrice($product["price"]);
+    echo "The price product is $price euros <br>"; 
+    echo "The price product without VAT is ". priceExcludingVAT($product["price"]) ." euros <br>"; // Appel de la fonction priceExcludingVAT() pour afficher le prix hors TVA de l'iPhone
+    echo "The discounted price product is " . discountedPrice($product["price"], $product["discount"]) . " euros <br>"; // Appel de la fonction discountedPrice() pour afficher le prix remisé de l'iPhone
     echo "</ul>"; // Ferme la liste de produits non ordonnée
 }
 
