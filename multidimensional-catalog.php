@@ -6,7 +6,7 @@
 $products = [
     "iPhone" => [
         "name" => "iPhone",
-        "price" => 45000,
+        "price" => 9850,
         "weight" => 200,
         "discount" => 10,
         "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
@@ -20,12 +20,15 @@ $products = [
     ],
     "iMac" => [
         "name" => "iMac",
-        "price" => 450000,
+        "price" => 45000,
         "weight" => 5000,
         "discount" => 50,
         "picture_url" => "https://static.fnac-static.com/multimedia/Images/FR/MDM/19/b2/a1/10596889/1540-1/tsp20250110194849/iMac-Apple-27-Ecran-Retina-5K-Intel-Core-i5-8-Go-RAM-1-To-Fusion-Drive-Argent-MRQY2FN-2019.jpg",
     ],
 ];
+$price = formatPrice($produc["price"]); // Appel de la fonction formatPrice() pour afficher le prix de l'iPhone
+priceExcludingVAT($price); // Appel de la fonction priceExcludingVAT() pour afficher le prix hors TVA de l'iPhone
+discountedPrice($price, $iPhone["discount"]); // Appel de la fonction discountedPrice() pour afficher le prix re
 
 // La méthode d'affichage var_dump() avec les balises de préformatage <pre>
 /*
@@ -47,6 +50,9 @@ foreach ($products as $key => $product) { // Parcourt chaque produit dans le tab
     foreach ($product as $attribute => $value) { // une deuxième boucle qui parcourt chaque attribut du produit en initialisant une variable $attribute pour la clé (name, price, weight, discount, picture_url) et $value pour la valeur
         echo "<li>$attribute: $value</li>"; // Affiche chaque attribut du produit sous forme de liste
     }
+    $price =formatPrice($product["price"]);
+    priceExcludingVAT($product["price"]);
+    discountedPrice($product["price"], $product["discount"]);
     echo "</ul>"; // Ferme la liste de produits non ordonnée
 }
 

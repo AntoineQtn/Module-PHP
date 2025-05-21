@@ -7,10 +7,12 @@ $iPhone = [
     "name" => "iPhone",
     "price" => 45000,
     "weight" => 200,
-    "discount" => 10,
+    "discount" => 10.0,
     "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
 ];
-formatPrice($iPhone["price"]); // Appel de la fonction formatPrice() pour afficher le prix de l'iPhone
+$price = formatPrice($iPhone["price"]); // Appel de la fonction formatPrice() pour afficher le prix de l'iPhone
+priceExcludingVAT($price); // Appel de la fonction priceExcludingVAT() pour afficher le prix hors TVA de l'iPhone
+discountedPrice($price, $iPhone["discount"]); // Appel de la fonction discountedPrice() pour afficher le prix remisé de l'iPhone
 
 //création d'une boucle while pour l'affichage
 $keys = array_keys($iPhone); // Récupère les clés du tableau associatif
