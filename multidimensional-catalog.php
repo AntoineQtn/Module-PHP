@@ -1,7 +1,4 @@
-
-
 <?php
-
 //création d'un tableau multidimensionnel à deux dimensions contenant trois tableaux associatifs
 $products = [
     "iPhone" => [
@@ -45,18 +42,31 @@ echo $products["iMac"]["name"].": name: ".$products["iMac"]["price"].", price: "
 //création d'une double  boucle foreach pour l'affichage
 
 foreach ($products as $key => $product) { // Parcourt chaque produit dans le tableau $products en initialisant une variable $key (iPhone, iPad et iMac) pour la clé et $product pour la valeur
-    echo "<p><b>$key</b></p>"; // Affiche la clé du produit (iPhone, iPad, iMac) en gras
-    echo "<ul>"; // Ouvre une liste non ordonnée contennant :
+echo "<p><b>$key</b></p>"; // Affiche la clé du produit (iPhone, iPad, iMac) en gras
+echo "<ul>"; // Ouvre une liste non ordonnée contennant :
     foreach ($product as $attribute => $value) { // une deuxième boucle qui parcourt chaque attribut du produit en initialisant une variable $attribute pour la clé (name, price, weight, discount, picture_url) et $value pour la valeur
-        echo "<li>$attribute: $value</li>"; // Affiche chaque attribut du produit sous forme de liste
+    echo "<li>$attribute: $value</li>"; // Affiche chaque attribut du produit sous forme de liste
     }
     $price = formatPrice($product["price"]);
-    echo "The price product is $price euros <br>"; 
+    echo "The price product is $price euros <br>";
     echo "The price product without VAT is ". priceExcludingVAT($product["price"]) ." euros <br>"; // Appel de la fonction priceExcludingVAT() pour afficher le prix hors TVA de l'iPhone
     echo "The discounted price product is " . discountedPrice($product["price"], $product["discount"]) . " euros <br>"; // Appel de la fonction discountedPrice() pour afficher le prix remisé de l'iPhone
     echo "</ul>"; // Ferme la liste de produits non ordonnée
 }
-
-
-
 ?>
+
+<h3>Your Cart</h3>
+<form action="cart.php" method="post">
+    <label for="product">Choose your product:</label>
+    <select id="product" name="product" required>
+        <option value="">-- Sélection --</option>
+        <option value="iPhone">iPhone</option>
+        <option value="iPad">iPad</option>
+        <option value="iMac">iMac</option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+
+    <input type="submit" value="Commander">
+</form>
