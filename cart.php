@@ -1,81 +1,44 @@
 <?php
 
-$products = [
-    "iPhone" => [
-        "name" => "iPhone",
-        "price" => 9850,
-        "weight" => 200,
-        "discount" => 10,
-        "picture_url" => "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/IPhone_16_Pro_Vector.svg/800px-IPhone_16_Pro_Vector.svg.png",
-    ],
-    "iPad" => [
-        "name" => "iPad",
-        "price" => 79900,
-        "weight" => 500,
-        "discount" => null,
-        "picture_url" => "https://media.materiel.net/r250/products/MN0005046452_1.jpg",
-    ],
-    "iMac" => [
-        "name" => "iMac",
-        "price" => 45000,
-        "weight" => 5000,
-        "discount" => 50,
-        "picture_url" => "https://static.fnac-static.com/multimedia/Images/FR/MDM/19/b2/a1/10596889/1540-1/tsp20250110194849/iMac-Apple-27-Ecran-Retina-5K-Intel-Core-i5-8-Go-RAM-1-To-Fusion-Drive-Argent-MRQY2FN-2019.jpg",
-    ],
-];
+include_once('header.php');
 
-function formatPrice($priceInCents)
-{
-    $price = $priceInCents / 100;
-    return $price;
-}
-
-
-function priceExcludingVAT($priceTTC)
-{
-    $priceTTC = formatPrice($priceTTC);
-    $tva = 5.5;
-    $priceHT = (100 * $priceTTC) / (100 + $tva);
-    return $priceHT;
-}
-
-
-function discountedPrice($price, $discount)
-{
-    $price = formatPrice($price);
-    if ($discount !== null) {
-        $price = $price - ($price * $discount / 100);
-    }
-    return $price;
-}
-
-// Vérifier si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $produit = $_POST["product"];
-    $quantity = (int) $_POST["quantity"];
-
-    // Vérifier si le produit existe dans le tableau
-    if (array_key_exists($produit, $products)) {
-        $product = $products[$produit];
-        $price = formatPrice($product["price"]);
-        $priceWithoutVAT = priceExcludingVAT($product["price"]);
-        $discountedPriceValue = discountedPrice($product["price"], $product["discount"]);
-
-        // Afficher les informations du produit
-        echo "<h1>Product Details</h1>";
-        echo "<p><b>Product:</b> " . $product["name"] . "</p>";
-        echo "<p><b>Price:</b> " . $price . " euros</p>";
-        echo "<p><b>Price without VAT:</b> " . $priceWithoutVAT . " euros</p>";
-        echo "<p><b>Discounted Price:</b> " . $discountedPriceValue . " euros</p>";
-        echo "<p><b>Quantity:</b> " . $quantity . "</p>";
-        echo "<p><b>Total Price:</b> " . ($discountedPriceValue * $quantity) . " euros</p>";
-        echo "<img src='" . $product["picture_url"] . "' alt='" . $product["name"] . "' width='200'>";
-    } else {
-        echo "Product not found.";
-    }
+if ($produitChoisi == $products["iPhone"]["name"]) {
+    $cartWeight = $products["iPhone"]["weight"] * $quantiteChoisie;
+    echo "<h3>" . $products["iPhone"]["name"] . "</h3><br>";
+    echo "<p>Quantity choose : " . $quantiteChoisie . "</p><br>";
+    echo "<p>The unitary price is : " . formatPrice($products["iPhone"]["price"]) . " euros </p><br>";
+    echo "<p>Your cart price is " . cartPrice($products["iPhone"]["price"], $quantiteChoisie) . " euros </p><br>";
+    echo "<p> The discounted price is : " . discountedPrice($products["iPhone"]["price"], $products["iPhone"]["discount"]) . " euros <br>";
+    echo "<p> ( " . $products["iPhone"]["discount"] . " % discount )</p><br>";
+    echo "<p>Your cart weight is " . $cartWeight . " grams </p><br>";
+    echo "<p>Shipping cost is : " . shippingCost($products["iPhone"]["weight"],  $quantiteChoisie, $products["iPhone"]["price"]) . " euros </p><br>";
+    echo "<p>Total price is : " . totalPrice(cartPrice($products["iPhone"]["price"], $quantiteChoisie), shippingCost($products["iPhone"]["weight"],  $quantiteChoisie, $products["iPhone"]["price"])) . " euros </p><br>";
+    echo "<img src='" . $products["iPhone"]["picture_url"] . "' alt='Image produit' /> <br>";
+} elseif ($produitChoisi == $products["iPad"]["name"]) {
+    $cartWeight = $products["iPad"]["weight"] * $quantiteChoisie;
+    echo "<h3>" . $products["iPad"]["name"] . "</h3><br>";
+    echo "<p>Quantity choose : " . $quantiteChoisie . "</p><br>";
+    echo "<p>The unitary price is : " . formatPrice($products["iPad"]["price"]) . " euros </p><br>";
+    echo "<p>Your cart price is : " . cartPrice($products["iPad"]["price"], $quantiteChoisie) . " euros </p><br>";
+    echo "<p> The discounted price is : " . discountedPrice($products["iPad"]["price"], $products["iPad"]["discount"]) . " euros <br>";
+    echo "<p> ( " . $products["iPad"]["discount"] . " % discount )</p><br>";
+    echo "<p>Your cart weight is : " .  $cartWeight . " grams </p><br>";
+    echo "<p>Shipping cost is : " . shippingCost($products["iPad"]["weight"],  $quantiteChoisie, $products["iPad"]["price"]) . " euros </p><br>";
+    echo "<p>Total price is : " . totalPrice(cartPrice($products["iPad"]["price"], $quantiteChoisie), shippingCost($products["iPad"]["weight"],  $quantiteChoisie, $products["iPad"]["price"])) . " euros </p><br>";
+    echo "<img src='" . $products["iPad"]["picture_url"] . "' alt='Image produit' /> <br>";
+} elseif ($produitChoisi== $products["iMac"]["name"]) {
+    $cartWeight = $products["iMac"]["weight"] * $quantiteChoisie;
+    echo "<h3>" . $products["iMac"]["name"] . "</h3><br>";
+    echo "<p>Quantity choose : " . $quantiteChoisie . "</p><br>";
+    echo "<p>The unitary price is : " . formatPrice($products["iMac"]["price"]) . " euros </p><br>";
+    echo "<p>Your cart price is : " . cartPrice($products["iMac"]["price"], $quantiteChoisie) . " euros </p><br>";
+    echo "<p> The discounted price is : " . discountedPrice($products["iMac"]["price"], $products["iMac"]["discount"]) . " euros <br>";
+    echo "<p> ( " . $products["iMac"]["discount"] . " % discount )</p><br>";
+    echo "<p>Your cart weight is : " .  $cartWeight . " grams </p><br>";
+    echo "<p>Shipping cost is : " . shippingCost($products["iMac"]["weight"],  $quantiteChoisie, $products["iMac"]["price"]) . " euros </p><br>";
+    echo "<p>Total price is : " . totalPrice(cartPrice($products["iMac"]["price"], $quantiteChoisie), shippingCost($products["iMac"]["weight"],  $quantiteChoisie, $products["iPhone"]["price"])) . " euros </p><br>";
+    echo "<img src='" . $products["iMac"]["picture_url"] . "' alt='Image produit' /> <br>";
 } else {
-    // Rediriger vers le formulaire si la page est accédée directement
-    header("Location: index.html");
-    exit();
 }
+
 ?>

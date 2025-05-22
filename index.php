@@ -1,10 +1,4 @@
+<?php include_once('header.php')?>
 
-<?php //include('header.php'); ?>
-<?php include('my-functions.php'); ?>
-<?php include('cart.php'); ?>
-<?php include('simple-catalog.php'); ?>
-<?php include('catalog-with-keys.php');?>
-<?php include('multidimensional-catalog.php');?>
-<?php include('item.php'); ?>
-
-<?php //include('footer.php'); ?>
+<?php include_once('formulaire.php')?>
+<?php include_once('footer.php')?>

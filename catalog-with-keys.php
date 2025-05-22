@@ -1,9 +1,7 @@
-
-
 <?php
-
+include_once('header.php');
 //création d'un tableau associatif clef/valeur
-$iPhone = [
+/*$iPhone = [
     "name" => "iPhone",
     "price" => 45000,
     "weight" => 200,
@@ -16,7 +14,7 @@ echo "The price product excluding the VAT is " . priceExcludingVAT($iPhone["pric
 echo "The discounted price of the product is " . discountedPrice($iPhone["price"], $iPhone["discount"]) . "euros <br>"; // Appel de la fonction discountedPrice() pour afficher le prix remisé de l'iPhone
 
 //création d'une boucle while pour l'affichage
-$keys = array_keys($iPhone); // Récupère les clés du tableau associatif
+/*$keys = array_keys($iPhone); // Récupère les clés du tableau associatif
 $i = 0; // Initialisation d'un compteur à 0
 while ($i < count($keys)) { // Tant que le compteur est inférieur au nombre de clés
     $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
@@ -25,7 +23,7 @@ while ($i < count($keys)) { // Tant que le compteur est inférieur au nombre de 
 }
 
 //création d'une boucle do while pour l'affichage
-$i = 0; // Initialisation d'un compteur à 0
+/*$i = 0; // Initialisation d'un compteur à 0
 $keys = array_keys($iPhone); // Récupère les clés du tableau associatif
 do { // Les instructions suivantes sont exécutées
     $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
@@ -34,7 +32,7 @@ do { // Les instructions suivantes sont exécutées
 } while ($i < count($keys)); // Tant que le compteur est inférieur au nombre de clés
 
 //création d'une boucle for pour l'affichage
-for ($i = 0; $i < count($keys); $i++) { // Tant que le compteur est inférieur au nombre de clés
+/*for ($i = 0; $i < count($keys); $i++) { // Tant que le compteur est inférieur au nombre de clés
     $key = $keys[$i]; // initialisation d'une variable qui récupère la clé actuelle
     echo "<p><b>$key : " . $iPhone[$key] . "</b></p>"; // Affiche en balise paragraphe la clé et la valeur associée
 }
