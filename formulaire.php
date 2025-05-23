@@ -14,3 +14,18 @@
     <input type="submit" value="Commander">
 </form>
 
+<?php
+
+$produitChoisi = $_POST["product"] ?? '';
+$quantiteChoisie = $_POST["quantity"] ?? '';
+
+if (isset($_POST["product"]) && isset($_POST["quantity"])) {
+    $produitChoisi = $_POST["product"];
+    $quantiteChoisie = $_POST["quantity"];
+} else {
+    $produitChoisi = null;
+    $quantiteChoisie = null;
+    echo "Le formulaire n'a pas encore été soumis.";
+}
+
+?>

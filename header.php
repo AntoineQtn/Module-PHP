@@ -1,7 +1,6 @@
 <!--<!DOCTYPE html>-->
-<?php include_once('functions_variables_object.php'); ?>
-<?php include_once('cart.php'); ?>
-<?php include_once('formulaire.php'); ?>
+
+
 
 <title>Ma Boutique en ligne</title>
 <html lang="en">

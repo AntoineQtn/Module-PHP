@@ -1,4 +1,5 @@
 <?php
+
 $products = [
     "iPhone" => [
         "name" => "iPhone",
@@ -37,45 +38,31 @@ echo "<ul>"; // Ouvre une liste non ordonnée contennant :
 ?>
 
 <?php
-include_once('formulaire.php');
-$produitChoisi = $_POST["product"]??'';
-$quantiteChoisie = $_POST["quantity"]??'';
-if (isset($_POST["product"]) && isset($_POST["quantity"])) {
-    $produitChoisi = $_POST["product"];
-    $quantiteChoisie = $_POST["quantity"];
-} else {
-    $produitChoisi = null;
-    $quantiteChoisie = null;
-    echo "Le formulaire n'a pas encore été soumis.";
-}
-
-?>
-
-<?php
-function formatPrice($price)
+function formatPrice($price): float
 {
     $price = $price / 100;
+    return $price;
 }
-function priceExcludingVAT($price)
+function priceExcludingVAT($price): float
 {
     $price = formatPrice($price);
     $tva = 5.5;
     $priceHT = (100 * $price) / (100 + $tva);
     return $priceHT;
 }
-function discountedPrice($price, $discount)
+function discountedPrice($price, $discount): float
 {
     $price = formatPrice($price);
     $price = $price - ($price * $discount / 100);
     return $price;
 }
-function cartPrice($price, $quantity)
+function cartPrice($price, $quantity): float
 {
     $price = formatPrice($price);
     $price = $price * $quantity;
     return $price;
 }
-function shippingCost($weight, $quantity, $price)
+function shippingCost($weight, $quantity, $price): float
 {
     $price = cartPrice($price, $quantity);
     $cartWeight = $weight * $quantity;
@@ -90,9 +77,35 @@ function shippingCost($weight, $quantity, $price)
         return $shippingCost;
     }
 }
-function totalPrice($price, $shippingCost)
+function totalPrice($price, $shippingCost): float
 {
     $totalPrice = $price + $shippingCost;
     return $totalPrice;
 }
+
+
+function shippingCost2($weight, $quantity, $price): float
+{
+    $price = cartPrice($price, $quantity);
+    $cartWeight = $weight * $quantity;
+    if ($cartWeight < 500) {
+        $shippingCost2 = 10;
+        return $shippingCost2;
+    } elseif ($cartWeight >= 500 && $cartWeight < 2000) {
+        $shippingCost2 = (15 / 100) * $price;
+        return $shippingCost2;
+    } else {
+        $shippingCost2 = 1;
+        return $shippingCost2;
+    }
+}
+function totalPrice2($price, $shippingCost2): float
+{
+    $totalPrice2 = $price + $shippingCost2;
+    return $totalPrice2;
+}
+
+
+
+
 ?>
