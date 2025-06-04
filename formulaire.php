@@ -16,8 +16,9 @@
 
 <?php
 
-$produitChoisi = $_POST["product"] ?? '';
+$produitChoisi = $_POST["product"] ?? ''; // on créer une variable $produitChoisi qui récupère la valeur du produit choisi dans le formulaire, ou une chaîne vide si le formulaire n'a pas été soumis
 $quantiteChoisie = $_POST["quantity"] ?? '';
+$transporteurChoisi = $_POST["switch_transporter"] ?? '';
 
 if (isset($_POST["product"]) && isset($_POST["quantity"])) {
     $produitChoisi = $_POST["product"];

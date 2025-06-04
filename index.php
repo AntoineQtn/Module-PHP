@@ -1,3 +1,4 @@
 <?php session_start(); ?> 
 <?php include_once('header.php')?>
 <?php include_once('formulaire.php')?>
+<?php var_dump($pdo)?>

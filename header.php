@@ -18,6 +18,7 @@
             <div class="logo">
                 <img src="logo.png" alt="Logo du site">
             </div>
+            <?php include_once('database.php')?>
             <div class="dropdown">
                 <button onclick="affichageDropdown()" class="dropbtn">Menu</button>
                 <div id="myDropdown" class="dropdown-content">
