@@ -3,9 +3,12 @@
     <label for="product">Choose your product:</label>
     <select id="product" name="product">
         <option value="">-- Sélection --</option>
-        <option value="iPhone">iPhone</option>
-        <option value="iPad">iPad</option>
-        <option value="iMac">iMac</option>
+        <option value="1">iPhone</option>
+        <option value="3">iPad</option>
+        <option value="4">iMac</option>
+        <option value="6">airPods</option>
+        <option value="8">appleTV</option>
+        <option value="10">appleGlass</option>
     </select>
 
     <label for="quantity">Quantity:</label>

@@ -1,5 +1,5 @@
 <?php
-
+/*
 $products = [
     "iPhone" => [
         "name" => "iPhone",
@@ -22,7 +22,7 @@ $products = [
         "discount" => 50,
         "picture_url" => "https://static.fnac-static.com/multimedia/Images/FR/MDM/19/b2/a1/10596889/1540-1/tsp20250110194849/iMac-Apple-27-Ecran-Retina-5K-Intel-Core-i5-8-Go-RAM-1-To-Fusion-Drive-Argent-MRQY2FN-2019.jpg",
     ],
-];
+];*/
 /*foreach ($products as $key => $product) { // Parcourt chaque produit dans le tableau $products en initialisant une variable $key (iPhone, iPad et iMac) pour la clé et $product pour la valeur
 echo "<p><b>$key</b></p>"; // Affiche la clé du produit (iPhone, iPad, iMac) en gras
 echo "<ul>"; // Ouvre une liste non ordonnée contennant :
@@ -38,6 +38,8 @@ echo "<ul>"; // Ouvre une liste non ordonnée contennant :
 ?>
 
 <?php
+include_once ('database.php') ;
+
 function formatPrice($price): float
 {
     $price = $price / 100;

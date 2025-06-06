@@ -1,37 +1,21 @@
-
 <?php
-try {
-    // Connexion à la base de données
-    $pdo = new PDO('mysql:host=localhost;dbname=ma_boutique;charset=utf8', 'Antoine', 'Toni17031996!');
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
-function updatePrice(PDO $pdo): void
+function getPDO(): PDO
 {
-    $sqlQuery = 'UPDATE products
-SET price = price * 1.05
-WHERE categories_id = 1;';
-    $statement = $pdo->prepare($sqlQuery); // On prépare la requête SQL
-    $statement->execute(); // On exécute la requête préparée
-    echo "Les prix des produits de la catégorie 1 ont été mis à jour avec succès.";
+    try {
+        return new PDO('mysql:host=localhost;dbname=ma_boutique;charset=utf8', 'Antoine', 'Toni17031996!');
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
 }
-updatePrice($pdo); // On appelle la fonction updatePrice() pour mettre à jour les prix des produits de la catégorie 1
-
 
 function getProducts(PDO $pdo): array
 {
-    $sqlQuery = "SELECT * FROM products"; // On stocke la requête SQL dans une variable
-    $statement = $pdo->prepare($sqlQuery); // On stocke la requête préparée dans une variable
-    $statement->execute(); // On exécute la requête préparée
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC); // On retourne les résultats de la requête sous forme de tableau associatif
-    echo "<pre>";
-    var_dump($results);
-    echo "</pre>";
-    return $results; // On retourne les résultats
+    $sqlQuery = "SELECT * FROM products";
+    $statement = $pdo->prepare($sqlQuery);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-getProducts($pdo); // On appelle la fonction getProducts() pour récupérer les produits de la base de données
-
+/*
 function getOrdersOfTheDay(PDO $pdo): array
 {
     $sqlQuery = 'SELECT * FROM orders
@@ -90,5 +74,6 @@ function getNoAvailableProducts(PDO $pdo): void
     echo "</pre>";
 }
 getNoAvailableProducts($pdo); // On appelle la fonction getNoAvailableProducts() pour récupérer les produits non disponibles
+*/
 
 ?>

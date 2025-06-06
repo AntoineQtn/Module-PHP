@@ -4,20 +4,28 @@ include_once('header.php');
 include_once('formulaire.php');
 include_once('functions_variables_object.php');
 
+$pdo = getPDO();
+$products = getProducts($pdo);
 
-if (!isset($produitChoisi) && isset($_SESSION["produitChoisi"], $_SESSION["quantiteChoisie"])) { // Vérifie si les variables de session existent
-    $produitChoisi = $_SESSION["produitChoisi"]; // Récupère la valeur de la variable de session
-    $quantiteChoisie = $_SESSION["quantiteChoisie"];
-    $transporteurChoisi = $_SESSION["transporteurChoisi"];
-}?>
-<?php if (isset($produitChoisi) && isset($quantiteChoisie)): // Vérifie si les variables sont définies 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["product"], $_POST["quantity"])) {
+    $produitChoisi = (int) $_POST["product"];
+    $quantiteChoisie = (int) $_POST["quantity"];
+
+    $_SESSION["produitChoisi"] = $produitChoisi;
+    $_SESSION["quantiteChoisie"] = $quantiteChoisie;
+} else {
+    echo "<p>Le formulaire n'a pas été soumis ou des champs sont manquants.</p>";
+    exit;
+}
+
+if (isset($produitChoisi) && isset($quantiteChoisie)): // Vérifie si les variables sont définies 
 ?>
     <?php foreach ($products as $key => $product): ?>
-        <?php if ($key == $produitChoisi):
+        <?php if ($product['id'] == $produitChoisi):
             $cartWeight = $product["weight"] * $quantiteChoisie; ?>
 
-            <h3><?=$key?></h3>
-            <p>The unitary price is :<?= formatPrice($product["price"]) ?> euros </p><br>
+            <h3><?= $key ?></h3>
+            <p>The unitary price is : <?= formatPrice($product["price"]) ?> euros </p><br>
             <p>The discounted price is : <?= discountedPrice($product["price"], $product["discount"]) ?> euros <br>
             <p>(<?= $product["discount"] ?> % discount )</p><br>
             <p>Quantity chosen : <?= $quantiteChoisie ?></p><br>
@@ -38,7 +46,7 @@ if (!isset($produitChoisi) && isset($_SESSION["produitChoisi"], $_SESSION["quant
                 <p>Total price is : <?= $total ?> euros </p><br>
             <?php endif; ?>
 
-            <img src="<?= $product["picture_url"] ?>" alt='Image produit'><br>
+            <img src="<?= $product["img"] ?>" alt='Image produit'><br>
             <form method="post">
                 <input type="submit" name="switch_transporter" value="switch transporter">
             </form>
